@@ -49,4 +49,4 @@ if current_ip != godaddy_ip:
     update_ip()
 else:
     print("IP address is equal, bailing out")
-    
+    print("test")
