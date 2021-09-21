@@ -2,23 +2,19 @@ import requests
 import json
 import argparse
 import os
+import sys
 from dotenv import dotenv_values
 
-config = dotenv_values(".env")  # config = {"key": "wgwegweg", "secret": "wegwegwegwegweg"}
+#parser = argparse.ArgumentParser(description='App for changing IP address of godaddy domains')
+#parser.add_argument('domain_name', type=str, help='domain name to be changed')
+#args = parser.parse_args()
 
+key = os.getenv.GODADDY_KEY
+secret = os.getenv.GODADDY_SECRET
 
-parser = argparse.ArgumentParser(description='App for changing IP address of godaddy domains')
-parser.add_argument('domain_name', type=str, help='domain name to be changed')
-args = parser.parse_args()
+#domain = args.domain_name
 
-
-domain = args.domain_name
-
-
-config = {
-    **key(".env.GODADDY_KEY"),  # load shared sensitive key
-    **secret(".env.GODADDY_SECRET"),  # load sensitive secret
-}
+domain_name = "rnclab.com"
 
 dns_record_type = 'A' #change this if you want to update 
 dns_record_name = '@' #other record types / names
@@ -60,4 +56,5 @@ if current_ip != godaddy_ip:
     update_ip()
 else:
     print("IP address is equal, bailing out")
+    
 
