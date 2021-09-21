@@ -1,8 +1,10 @@
 import requests
 import json
 import argparse
+import os
 from dotenv import dotenv_values
 
+config = dotenv_values(".env")  # config = {"key": "wgwegweg", "secret": "wegwegwegwegweg"}
 
 
 parser = argparse.ArgumentParser(description='App for changing IP address of godaddy domains')
@@ -11,8 +13,13 @@ args = parser.parse_args()
 
 
 domain = args.domain_name
-key = 'dKDLpdtn2Yeb_BtQW7tUXsX23gupUQPpwKEYsN' #change this to godaddy key
-secret = 'Jn3hysKbahSNtfgBPt7aHf' #change this to godaddy secret
+
+
+config = {
+    **key(".env.GODADDY_KEY"),  # load shared sensitive key
+    **secret(".env.GODADDY_SECRET"),  # load sensitive secret
+}
+
 dns_record_type = 'A' #change this if you want to update 
 dns_record_name = '@' #other record types / names
 
