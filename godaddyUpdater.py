@@ -2,7 +2,6 @@ import requests
 import json
 import argparse
 import os
-import sys
 from dotenv import load_dotenv
 
 parser = argparse.ArgumentParser(description='App for changing IP address of godaddy domains')
@@ -52,7 +51,6 @@ def update_ip():
         print("Success!")
     else:
         print("Request failed")
-
 
 if current_ip != godaddy_ip:
     print("IP address is different, changing ip")
