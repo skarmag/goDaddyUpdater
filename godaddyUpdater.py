@@ -16,11 +16,9 @@ secret = os.getenv('GODADDY_SECRET')
 
 domain = args.domain_name
 
-domain = "rnclab.com"
-
 dns_record_type = 'A' #change this if you want to update 
 dns_record_name = '@' #other record types / names
-
+ 
 headers_get_domaininfo = {"Authorization" : "sso-key {}:{}".format(key, secret)}
 headers_set_domaininfo = {"Authorization" : "sso-key {}:{}".format(key, secret), "accept": "application/json", "Content-Type": "application/json"}
 url = "https://api.godaddy.com/v1/domains/{}/records/{}/{}".format(domain,dns_record_type,dns_record_name)
